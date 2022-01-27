@@ -1,0 +1,39 @@
+.login-page-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    width: 350px;
+    background-color: var(--main-red);
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+.title {
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+}
+
+form {
+    margin-top: 50px;
+}
+
+input:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+button {
+    margin-bottom: 15px;
+}
+
+p {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
