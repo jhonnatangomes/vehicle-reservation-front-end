@@ -6,7 +6,12 @@ import { LocalStorageService } from "./local-storage.service";
 })
 export class TokenService {
     private _token!: string;
-    constructor(private localStorageService: LocalStorageService) {}
+    constructor(private localStorageService: LocalStorageService) {
+        const loginInfo = this.localStorageService.getValue();
+        if (loginInfo) {
+            this._token = loginInfo.token;
+        }
+    }
 
     get token() {
         return this._token;

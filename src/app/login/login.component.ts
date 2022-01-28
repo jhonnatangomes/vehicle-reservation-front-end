@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
         const loginInfo = this.localStorageService.getValue();
         if (loginInfo) {
             this.router.navigateByUrl("/home");
-            this.tokenService.token = loginInfo.token;
         }
     }
 
