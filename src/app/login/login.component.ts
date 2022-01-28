@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ApiService } from "../services/api.service";
 import { LoginResponse } from "../protocols/User";
+import { TokenService } from "../services/token.service";
 
 @Component({
     selector: "app-login",
@@ -13,9 +14,12 @@ export class LoginComponent implements OnInit {
     name!: string;
     email!: string;
     password!: string;
-    token!: string;
 
-    constructor(private router: Router, private apiService: ApiService) {
+    constructor(
+        private router: Router,
+        private apiService: ApiService,
+        private tokenService: TokenService
+    ) {
         this.routerUrl = this.router.url;
     }
 
@@ -49,7 +53,7 @@ export class LoginComponent implements OnInit {
             .subscribe((data) => {
                 window.alert("Usuário logado com sucesso");
                 const response = <LoginResponse>data;
-                this.token = response.token;
+                this.tokenService.token = response.token;
             });
     }
 }
