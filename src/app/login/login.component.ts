@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { ApiService } from "../services/api.service";
 import { LoginResponse } from "../protocols/User";
 import { TokenService } from "../services/token.service";
+import { LocalStorageService } from "../services/local-storage.service";
 
 @Component({
     selector: "app-login",
@@ -18,12 +19,19 @@ export class LoginComponent implements OnInit {
     constructor(
         private router: Router,
         private apiService: ApiService,
-        private tokenService: TokenService
+        private tokenService: TokenService,
+        private localStorageService: LocalStorageService
     ) {
         this.routerUrl = this.router.url;
     }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        const loginInfo = this.localStorageService.getValue();
+        if (loginInfo) {
+            this.router.navigateByUrl("/home");
+            this.tokenService.token = loginInfo.token;
+        }
+    }
 
     onSubmit() {
         if (this.routerUrl === "/cadastro") {

@@ -10,6 +10,6 @@ export class HomeComponent implements OnInit {
     constructor(private tokenService: TokenService) {}
 
     ngOnInit(): void {
-        console.log(this.tokenService);
+        console.log(this.tokenService.token);
     }
 }
