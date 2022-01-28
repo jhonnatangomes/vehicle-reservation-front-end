@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ApiService } from "../services/api.service";
+import { LoginResponse } from "../protocols/User";
 
 @Component({
     selector: "app-login",
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
     name!: string;
     email!: string;
     password!: string;
+    token!: string;
 
     constructor(private router: Router, private apiService: ApiService) {
         this.routerUrl = this.router.url;
@@ -46,7 +48,8 @@ export class LoginComponent implements OnInit {
             .login({ email: this.email, password: this.password })
             .subscribe((data) => {
                 window.alert("Usuário logado com sucesso");
-                console.log(data);
+                const response = <LoginResponse>data;
+                this.token = response.token;
             });
     }
 }
