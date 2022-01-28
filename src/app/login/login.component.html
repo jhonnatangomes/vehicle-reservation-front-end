@@ -1,11 +1,12 @@
 <div class="login-page-container">
     <div class="form-container">
         <span class="title">Reserva Veículos</span>
-        <form>
-            <input type="text" placeholder="email">
-            <input type="password" placeholder="senha">
-            <button>Entrar</button>
+        <form (ngSubmit)="onSubmit()">
+            <input type="text" placeholder="nome" [(ngModel)]="name" name="name" *ngIf="routerUrl === '/cadastro'" required/>
+            <input type="text" placeholder="email" [(ngModel)]="email" name="email" required />
+            <input type="password" placeholder="senha" [(ngModel)]="password" name="password" required />
+            <button>{{ routerUrl === "/" ? "Entrar" : "Cadastrar" }}</button>
         </form>
-        <p>Não se cadastrou? Cadastre-se aqui</p>
+        <p [routerLink]="[routerUrl === '/' ? '/cadastro' : '/']">{{ routerUrl === "/" ? "Não se cadastrou? Cadastre-se aqui" : "Já possui um cadastro? Faça login" }}</p>
     </div>
 </div>
