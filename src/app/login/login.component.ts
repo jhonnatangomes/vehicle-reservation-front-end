@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
                 window.alert("Usuário logado com sucesso");
                 const response = <LoginResponse>data;
                 this.tokenService.token = response.token;
+                this.router.navigateByUrl("/home");
             });
     }
 }
