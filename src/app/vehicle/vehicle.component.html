@@ -14,16 +14,16 @@
     </div>
     <div class="horizontal-separator"></div>
     <div class="price">
-        <p>Preço: R$ {{vehicle.pricePerDay.toString(2).replace(".", ",")}}/dia</p>
+        <p>Preço: R$ {{vehicle.pricePerDay.toString().replace(".", ",")}}/dia</p>
         <div>
-            <button class="minus">-</button>
-            <span>1</span>
-            <button class="plus">+</button>
+            <button class="minus" (click)="changeCount('-')">-</button>
+            <span>{{count}}</span>
+            <button class="plus" (click)="changeCount('+')">+</button>
         </div>
     </div>
     <div class="total">
         <span>Total: </span>
-        <span>R$ 85,90</span>
+        <span>R$ {{ (vehicle.pricePerDay*count).toFixed(2).replace(".", ",") }}</span>
     </div>
     <button>Reservar</button>
 </div>

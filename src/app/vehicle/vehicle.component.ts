@@ -10,6 +10,7 @@ export class VehicleComponent implements OnInit {
     @Input() vehicle!: Vehicle;
     currentSelectedImage!: string;
     currentSelectedColor!: string;
+    count = 1;
     constructor() {}
 
     ngOnInit(): void {
@@ -24,6 +25,15 @@ export class VehicleComponent implements OnInit {
                 (image) => image.color === color
             );
             this.currentSelectedImage = <string>newImage?.url;
+        }
+    }
+
+    changeCount(sign: "+" | "-") {
+        if (sign === "+") {
+            this.count++;
+        }
+        if (sign === "-" && this.count !== 1) {
+            this.count--;
         }
     }
 }
