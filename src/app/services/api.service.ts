@@ -17,6 +17,12 @@ export class ApiService {
         return throwError(() => new Error(error.message));
     }
 
+    getHeaders(token: string) {
+        return {
+            Authorization: `Bearer ${token}`,
+        };
+    }
+
     createUser(user: User) {
         return this.http
             .post(`${this.baseUrl}/sign-up`, user)
@@ -29,12 +35,6 @@ export class ApiService {
             .pipe(catchError(this.handleError));
     }
 
-    getHeaders(token: string) {
-        return {
-            Authorization: `Bearer ${token}`,
-        };
-    }
-
     logout(token: string) {
         return this.http
             .post(
@@ -42,6 +42,14 @@ export class ApiService {
                 {},
                 { headers: this.getHeaders(token), responseType: "text" }
             )
+            .pipe(catchError(this.handleError));
+    }
+
+    getVehicles(token: string) {
+        return this.http
+            .get(`${this.baseUrl}/vehicles`, {
+                headers: this.getHeaders(token),
+            })
             .pipe(catchError(this.handleError));
     }
 }

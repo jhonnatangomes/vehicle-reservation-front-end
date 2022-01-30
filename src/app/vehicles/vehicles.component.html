@@ -1,11 +1,5 @@
 <div class="container">
     <div class="inner-container">
-        <app-vehicle></app-vehicle>
-        <app-vehicle></app-vehicle>
-        <app-vehicle></app-vehicle>
-        <app-vehicle></app-vehicle>
-        <app-vehicle></app-vehicle>
-        <app-vehicle></app-vehicle>
-        <app-vehicle></app-vehicle>
+        <app-vehicle *ngFor="let vehicle of vehicles" [vehicle]="vehicle"></app-vehicle>
     </div>
 </div>

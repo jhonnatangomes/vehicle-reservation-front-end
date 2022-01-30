@@ -1,27 +1,20 @@
 <div class="card">
-    <img src="https://revistahotrods.com.br/wp-content/uploads/2017/07/imagem-04.jpg" />
-    <p class="car-name">Um carro muito maneiro</p>
+    <img [src]="currentSelectedImage" />
+    <p class="car-name">{{vehicle.name}}</p>
     <div class="horizontal-separator"></div>
     <div class="colors-container">
         <p>Cores:</p>
         <div class="colors">
-            <div class="color-container">
-                <div class="color"></div>
-            </div>
-            <div class="color-container">
-                <div class="color"></div>
-            </div>
-            <div class="color-container">
-                <div class="color"></div>
-            </div>
-            <div class="color-container">
-                <div class="color"></div>
-            </div>
+            <ng-container *ngFor="let image of vehicle.images">
+                <div class="color-container" [ngStyle]="{ border: currentSelectedColor === image.color ? '2px solid green' : '1px solid lightgray'}" (click)="changeColor(image.color)">
+                    <div class="color" [ngStyle]="{ backgroundColor: image.color}"></div>
+                </div>
+            </ng-container>
         </div>
     </div>
     <div class="horizontal-separator"></div>
     <div class="price">
-        <p>Preço: R$ 85,90/dia</p>
+        <p>Preço: R$ {{vehicle.pricePerDay.toString(2).replace(".", ",")}}/dia</p>
         <div>
             <button class="minus">-</button>
             <span>1</span>

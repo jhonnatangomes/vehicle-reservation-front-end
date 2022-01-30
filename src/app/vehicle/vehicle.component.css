@@ -45,7 +45,6 @@
     width: 30px;
     height: 30px;
     border-radius: 5px;
-    border: 1px solid lightgray;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,7 +56,6 @@
 }
 
 .color {
-    background-color: red;
     width: 22px;
     height: 22px;
     border-radius: 5px;
