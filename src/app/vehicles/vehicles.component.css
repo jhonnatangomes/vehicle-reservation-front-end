@@ -1,0 +1,15 @@
+.container {
+    width: 100%;
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-container {
+    max-width: 960px;
+    max-height: 720px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,29 @@
+<div class="card">
+    <img [src]="currentSelectedImage" />
+    <p class="car-name">{{vehicle.name}}</p>
+    <div class="horizontal-separator"></div>
+    <div class="colors-container">
+        <p>Cores:</p>
+        <div class="colors">
+            <ng-container *ngFor="let image of vehicle.images">
+                <div class="color-container" [ngStyle]="{ border: currentSelectedColor === image.color ? '2px solid green' : '1px solid lightgray'}" (click)="changeColor(image.color)">
+                    <div class="color" [ngStyle]="{ backgroundColor: image.color}"></div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div class="horizontal-separator"></div>
+    <div class="price">
+        <p>Preço: R$ {{vehicle.pricePerDay.toString().replace(".", ",")}}/dia</p>
+        <div>
+            <button class="minus" (click)="changeCount('-')">-</button>
+            <span>{{count}}</span>
+            <button class="plus" (click)="changeCount('+')">+</button>
+        </div>
+    </div>
+    <div class="total">
+        <span>Total: </span>
+        <span>R$ {{ (vehicle.pricePerDay*count).toFixed(2).replace(".", ",") }}</span>
+    </div>
+    <button>Reservar</button>
+</div>

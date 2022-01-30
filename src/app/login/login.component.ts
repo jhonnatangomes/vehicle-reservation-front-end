@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ApiService } from "../services/api.service";
 import { LoginResponse } from "../protocols/User";
-import { TokenService } from "../services/token.service";
+import { UserDataService } from "../services/user-data.service";
 import { LocalStorageService } from "../services/local-storage.service";
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     constructor(
         private router: Router,
         private apiService: ApiService,
-        private tokenService: TokenService,
+        private userDataService: UserDataService,
         private localStorageService: LocalStorageService
     ) {
         this.routerUrl = this.router.url;
@@ -59,8 +59,7 @@ export class LoginComponent implements OnInit {
             .login({ email: this.email, password: this.password })
             .subscribe((data) => {
                 window.alert("Usuário logado com sucesso");
-                const response = <LoginResponse>data;
-                this.tokenService.token = response.token;
+                this.userDataService.userData = <LoginResponse>data;
                 this.router.navigateByUrl("/home");
             });
     }

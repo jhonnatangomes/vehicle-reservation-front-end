@@ -1,8 +1,5 @@
 import { Injectable } from "@angular/core";
-
-interface LoginInfo {
-    token: string;
-}
+import { LoginResponse } from "../protocols/User";
 
 @Injectable({
     providedIn: "root",
@@ -10,17 +7,23 @@ interface LoginInfo {
 export class LocalStorageService {
     constructor() {}
 
-    setValue(key: string, value: Object | string) {
-        const object = { [key]: value };
-        const stringifiedObject = JSON.stringify(object);
-        localStorage.setItem("vehicle-reservation", stringifiedObject);
+    setValue(value: Object | null) {
+        if (!value) {
+            return this.removeValue();
+        }
+        const stringifiedValue = JSON.stringify(value);
+        localStorage.setItem("vehicle-reservation", stringifiedValue);
     }
 
-    getValue(): LoginInfo | null {
+    getValue(): LoginResponse | null {
         const data = localStorage.getItem("vehicle-reservation");
         if (!data) {
             return null;
         }
         return JSON.parse(data);
+    }
+
+    removeValue() {
+        localStorage.removeItem("vehicle-reservation");
     }
 }

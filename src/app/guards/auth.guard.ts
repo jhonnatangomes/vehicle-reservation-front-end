@@ -7,13 +7,16 @@ import {
     UrlTree,
 } from "@angular/router";
 import { Observable } from "rxjs";
-import { TokenService } from "../services/token.service";
+import { UserDataService } from "../services/user-data.service";
 
 @Injectable({
     providedIn: "root",
 })
 export class AuthGuard implements CanActivate {
-    constructor(private router: Router, private tokenService: TokenService) {}
+    constructor(
+        private router: Router,
+        private userDataService: UserDataService
+    ) {}
 
     canActivate(
         route: ActivatedRouteSnapshot,
@@ -23,7 +26,7 @@ export class AuthGuard implements CanActivate {
         | Promise<boolean | UrlTree>
         | boolean
         | UrlTree {
-        if (this.tokenService.token) {
+        if (this.userDataService.userData) {
             return true;
         }
         window.alert("Você não está logado. Por favor, faça login");
