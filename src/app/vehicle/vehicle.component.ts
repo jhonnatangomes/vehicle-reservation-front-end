@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Vehicle } from "../protocols/Vehicle";
+import { ApiService } from "../services/api.service";
 import { UserDataService } from "../services/user-data.service";
 
 @Component({
@@ -14,7 +15,10 @@ export class VehicleComponent implements OnInit {
     count = 1;
     email!: string;
 
-    constructor(private userDataService: UserDataService) {
+    constructor(
+        private userDataService: UserDataService,
+        private apiService: ApiService
+    ) {
         this.email = <string>userDataService.userData?.user.email;
     }
 
@@ -42,5 +46,44 @@ export class VehicleComponent implements OnInit {
         }
     }
 
-    handleClick() {}
+    handleClick() {
+        if (this.vehicle.reservations === null) {
+            const confirm = window.confirm(
+                `Você irá reservar ${this.vehicle.name} por ${
+                    this.count === 1 ? "1 dia" : this.count + " dias"
+                } por um total de R$${(this.count * this.vehicle.pricePerDay)
+                    .toFixed(2)
+                    .replace(".", ",")}`
+            );
+            if (confirm) {
+                this.apiService
+                    .makeReservation(
+                        <string>this.userDataService.userData?.token,
+                        this.vehicle.id,
+                        this.count
+                    )
+                    .subscribe((data) => {
+                        this.vehicle = <Vehicle>data;
+                    });
+            }
+        } else {
+            const confirm = window.confirm(
+                `Você tem certeza que quer devolver ${this.vehicle.name}?`
+            );
+            if (confirm) {
+                this.apiService
+                    .returnVehicle(
+                        <string>this.userDataService.userData?.token,
+                        this.vehicle.id
+                    )
+                    .subscribe((data) => {
+                        this.vehicle = <Vehicle>data;
+                        window.alert(
+                            `Você deverá pagar R$${this.vehicle.reservations?.totalToPay}`
+                        );
+                        this.vehicle.reservations = null;
+                    });
+            }
+        }
+    }
 }
