@@ -25,5 +25,5 @@
         <span>Total: </span>
         <span>R$ {{ (vehicle.pricePerDay*count).toFixed(2).replace(".", ",") }}</span>
     </div>
-    <button>Reservar</button>
+    <button [disabled]="vehicle.reservations && vehicle.reservations.user.email !== email" [ngStyle]="{ backgroundColor : vehicle.reservations?.user?.email === email ? 'red' : '', color: vehicle.reservations?.user?.email === email ? 'white' : ''}" (click)="handleClick()">{{vehicle.reservations?.user?.email === email ? "Devolver" : "Reservar"}}</button>
 </div>

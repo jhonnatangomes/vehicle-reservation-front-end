@@ -28,3 +28,8 @@ button {
     background-color: rgb(192, 224, 143);
     cursor: pointer;
 }
+
+button:disabled {
+    opacity: 0.5;
+    cursor: initial;
+}

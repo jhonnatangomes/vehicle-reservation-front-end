@@ -52,4 +52,28 @@ export class ApiService {
             })
             .pipe(catchError(this.handleError));
     }
+
+    makeReservation(token: string, vehicleId: number, daysRented: number) {
+        return this.http
+            .post(
+                `${this.baseUrl}/reservation`,
+                { vehicleId, daysRented },
+                {
+                    headers: this.getHeaders(token),
+                }
+            )
+            .pipe(catchError(this.handleError));
+    }
+
+    returnVehicle(token: string, vehicleId: number) {
+        return this.http
+            .post(
+                `${this.baseUrl}/reservation/return`,
+                { vehicleId },
+                {
+                    headers: this.getHeaders(token),
+                }
+            )
+            .pipe(catchError(this.handleError));
+    }
 }
