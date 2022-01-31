@@ -7,6 +7,7 @@ export interface User {
 export interface LoginResponse {
     user: {
         name: string;
+        email: string;
     };
     token: string;
 }

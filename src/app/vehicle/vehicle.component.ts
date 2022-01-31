@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Vehicle } from "../protocols/Vehicle";
+import { UserDataService } from "../services/user-data.service";
 
 @Component({
     selector: "app-vehicle",
@@ -11,7 +12,11 @@ export class VehicleComponent implements OnInit {
     currentSelectedImage!: string;
     currentSelectedColor!: string;
     count = 1;
-    constructor() {}
+    email!: string;
+
+    constructor(private userDataService: UserDataService) {
+        this.email = <string>userDataService.userData?.user.email;
+    }
 
     ngOnInit(): void {
         this.currentSelectedImage = this.vehicle.images[0].url;
@@ -36,4 +41,6 @@ export class VehicleComponent implements OnInit {
             this.count--;
         }
     }
+
+    handleClick() {}
 }
