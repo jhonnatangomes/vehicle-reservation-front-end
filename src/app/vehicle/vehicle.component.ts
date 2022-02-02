@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
 import { Vehicle } from "../protocols/Vehicle";
 import { ApiService } from "../services/api.service";
 import { UserDataService } from "../services/user-data.service";
