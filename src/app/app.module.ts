@@ -10,9 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
+import { MyReservationsComponent } from './my-reservations/my-reservations.component';
 
 @NgModule({
-    declarations: [AppComponent, LoginComponent, HomeComponent, NavbarComponent, VehiclesComponent, VehicleComponent],
+    declarations: [AppComponent, LoginComponent, HomeComponent, NavbarComponent, VehiclesComponent, VehicleComponent, MyReservationsComponent],
     imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
     providers: [],
     bootstrap: [AppComponent],

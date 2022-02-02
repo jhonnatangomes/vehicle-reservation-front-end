@@ -1,0 +1,8 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="inner-container">
+        <app-vehicle *ngIf="vehicle?.reservations" [vehicle]="vehicle"></app-vehicle>
+        <span *ngIf="vehicle?.reservations === undefined">Você não tem nenhuma reserva no momento</span>
+    </div>
+</div>
+

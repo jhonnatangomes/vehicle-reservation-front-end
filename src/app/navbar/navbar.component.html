@@ -1,10 +1,10 @@
 <div class="nav-bar">
-    <span class="title">ReservaVeículos</span>
+    <span class="title" routerLink="/home">ReservaVeículos</span>
     <div class="menu">
         <span class="welcome">Bem-vindo, {{ name }}</span>
         <img [src]="svgPath" (click)="handleClick()">
         <div class="options" *ngIf="svgPath === 'assets/up-arrow.svg'">
-            <p>Minhas reservas</p>
+            <p routerLink="/my-reservations">Minhas reservas</p>
             <p (click)="logout()">Sair</p>
         </div>
     </div>

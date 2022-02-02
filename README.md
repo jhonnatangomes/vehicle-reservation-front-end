@@ -1,27 +1,27 @@
-# ReservaVeiculosFrontEnd
+# Reserva Veiculos
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
+Welcome to ReservaVeiculos, a web application built with angular where you can rent cars. This is the front-end part of this application. You can find the back-end in this [repo].
 
-## Development server
+## How it works
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Each user needs to register and login in order to access the application. Then, one can choose between the available cars and make a reservation. It is only possible to reserve a single car at a time. When it is time to return the car, just find your car in the main page and return it, or navigate to the "my reservations" tab via the navigation menu and check your current reservation.
 
-## Code scaffolding
+## How to run
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Clone the repo in your machine and head to the newly created directory:
 
-## Build
+    git clone https://github.com/jhonnatangomes/vehicle-reservation-front-end
+    cd vehicle-reservation-front-end
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Then, install dependencies:
 
-## Running unit tests
+    npm install
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You can then start the project using:
 
-## Running end-to-end tests
+    npm start
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Alternatively, if you want to check the deployed version, you can go [here]. When using the deployed version, the first login might take about 5 seconds due to the deploy of the back-end in Heroku. It takes a little while to wake up the application when it has not been used for a while.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[here]: http://vehicle-reservation-front-end.vercel.app/
+[repo]: https://github.com/jhonnatangomes/vehicle-reservation-back-end
