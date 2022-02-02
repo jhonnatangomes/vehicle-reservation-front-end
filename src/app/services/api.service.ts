@@ -76,4 +76,12 @@ export class ApiService {
             )
             .pipe(catchError(this.handleError));
     }
+
+    getReservation(token: string) {
+        return this.http
+            .get(`${this.baseUrl}/reservation`, {
+                headers: this.getHeaders(token),
+            })
+            .pipe(catchError(this.handleError));
+    }
 }
