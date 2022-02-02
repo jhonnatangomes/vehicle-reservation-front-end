@@ -1,4 +1,4 @@
-# ReservaVeiculosFrontEnd
+# Reserva Veiculos
 
 Welcome to ReservaVeiculos, a web application built with angular where you can rent cars.
 
