@@ -1,6 +1,6 @@
 # Reserva Veiculos
 
-Welcome to ReservaVeiculos, a web application built with angular where you can rent cars.
+Welcome to ReservaVeiculos, a web application built with angular where you can rent cars. This is the front-end part of this application. You can find the back-end in this [repo].
 
 ## How it works
 
@@ -24,3 +24,4 @@ You can then start the project using:
 Alternatively, if you want to check the deployed version, you can go [here]. When using the deployed version, the first login might take about 5 seconds due to the deploy of the back-end in Heroku. It takes a little while to wake up the application when it has not been used for a while.
 
 [here]: http://vehicle-reservation-front-end.vercel.app/
+[repo]: https://github.com/jhonnatangomes/vehicle-reservation-back-end
